@@ -1,0 +1,107 @@
+<form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)" style="margin-top: 10em;width: 40em;">
+
+    <!--EmployeeID-->
+    <input type="hidden" name="CustomerId" [(ngModel)]="userdetailservice.formData.CustomerId">
+
+    <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" name="CustomerName" #CustomerName="ngModel" [(ngModel)]="userdetailservice.formData.CustomerName"
+            class="form-control" placeholder="Enter full name" required minlength="5" maxlength="25"
+            [ngClass]="{'is-invalid': CustomerName.touched && CustomerName.invalid}" />
+
+        <div class="validation-error" *ngIf="CustomerName.touched && CustomerName.invalid">
+            <div *ngIf="CustomerName.errors.required">
+                FirstName is required
+            </div>
+        </div>
+
+
+
+    </div>
+   
+    <div class="form-group">
+        <label>Age:</label>
+        <input type="number" name="Age" #Age="ngModel" [(ngModel)]="userdetailservice.formData.Age"
+            class="form-control" placeholder="Enter Age" required minlength="2" maxlength="25"
+            [ngClass]="{'is-invalid': Age.touched && Age.invalid}" />
+
+        <div class="validation-error" *ngIf="Age.touched && Age.invalid">
+            <div *ngIf="Age.errors.required">
+                Age is required
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="form-group">
+        <label>Gender:</label>
+        <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="userdetailservice.formData.Gender"
+            class="form-control" placeholder="Enter Gender" required
+            [ngClass]="{'is-invalid': Gender.touched && Gender.invalid}" />
+
+        <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
+            <div *ngIf="Gender.errors.required">
+                Gender is required
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="form-group">
+        <label>Job:</label>
+        <input type="text" name="Job" #Job="ngModel" [(ngModel)]="userdetailservice.formData.Job"
+            class="form-control" placeholder="Enter Job" required minlength="3"
+            [ngClass]="{'is-invalid': Job.touched && Job.invalid}" />
+
+        <div class="validation-error" *ngIf="Job.touched && Job.invalid">
+            <div *ngIf="Job.errors.required">
+                Job is required
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- <div class="form-group">
+        <label>Hobby:</label>
+        <input type="text" name="Hobby" #Hobby="ngModel" [(ngModel)]="userdetailservice.formData.Hobby"
+            class="form-control" placeholder="Enter Hobby" required minlength="3"
+            [ngClass]="{'is-invalid': Hobby.touched && Hobby.invalid}" />
+
+        <div class="validation-error" *ngIf="Hobby.touched && Hobby.invalid">
+            <div *ngIf="Hobby.errors.required">
+                Hobby is required
+            </div>
+        </div>
+
+
+
+    </div> -->
+    <!-- <div class="form-group">
+        <label>Favourite Food:</label>
+        <input type="text" name="Foodname" #Foodname="ngModel" [(ngModel)]="userdetailservice.formData.Foodname"
+            class="form-control" placeholder="Enter Foodname" required minlength="3"
+            [ngClass]="{'is-invalid': Foodname.touched && Foodname.invalid}" />
+
+        <div class="validation-error" *ngIf="Foodname.touched && Foodname.invalid">
+            <div *ngIf="Foodname.errors.required">
+                Foodname is required
+            </div>
+        </div>
+
+
+
+    </div> -->
+
+    
+    <br>
+    <div class="form-group" style="width: 15em;">
+        <button type="submit" class="btn btn-lg btn-primary form-control"
+            [disabled]="!(form.valid &&form.dirty)">Submit</button>
+    </div>
+
+</form>

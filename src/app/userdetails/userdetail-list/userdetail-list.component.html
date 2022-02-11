@@ -1,0 +1,55 @@
+<div class="container" style="margin-top: 10em;">
+    <h2>User Details</h2>
+    <a href="#" routerLink="/userdetails" style="padding-right: 10em;">Reports</a>
+    <div class="row">
+
+        <div class="form-control">
+            <!--Search-->
+            <input class="form-control" type="text" placeholder="Search text here..."[(ngModel)]="filter">
+            {{filter}}
+            <br>
+            <button class="btn btn-primary">Search user</button>
+            
+        </div>
+    </div>
+    <table class ="table table-bordered table-striped">
+        <thead>
+            <tr>
+            <th>CustomerId</th>
+            <th>CustomerName</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Job</th>
+            <!-- <th>HobbyID</th> -->
+            <!-- <th>Hobby</th> -->
+            <!-- <th>FoodId</th> -->
+            <!-- <th>Foodname</th> -->
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let use of userdetailservice.userdetail |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+                <td>{{use.CustomerId}}</td>
+                <td>{{use.CustomerName}}</td>
+                <td>{{use.Age}}</td>
+                <td>{{use.Gender}}</td>
+                <td>{{use.Job}}</td>
+                <!-- <td>{{use.Hid}}</td> -->
+                 <!-- <td>{{use.Hobby}}</td> -->
+                 <!-- <td>{{use.Fid}}</td>  -->
+                <!-- <td>{{use.Foodname}}</td>
+                 -->
+                   
+                    <td>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger"(click)="deleteUserDetail(use.CustomerId)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+</div>
